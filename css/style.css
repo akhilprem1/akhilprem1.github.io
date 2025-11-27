@@ -1,0 +1,188 @@
+/* -------- Reset / base -------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background-color: #f5f5f5;
+}
+
+a {
+  color: #135ba1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Hero container: acts as a viewport over the fixed-size image */
+/* The image must have a 50% whited out left region so it always appears centered. */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 175px;           /* adjust to match your banner’s visual height */
+  overflow: hidden;        /* hide the part of the image that extends past the right edge */
+  border-bottom: 1px solid #000;
+  background-color: #ffffff;
+}
+
+/* The actual banner image: fixed size, anchored at the left */
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 175px;           /* same as .hero height */
+  width: auto;             /* keep aspect ratio, no rescaling based on window width */
+  max-width: none;         /* don’t auto-fit to container */
+}
+
+/* Text overlay on top of the image */
+/* .hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.8rem 1rem;
+} */
+
+.hero-inner {
+  position: absolute;
+  top: 50%;               /* vertical position of top w.r.t. hero */
+  left: 50%;              /* horizontal center of left w.r.t. hero */
+  transform: translate(-150%, -50%); /* Move from above anchor by % size of inner. */
+  z-index: 2;
+}
+
+/* Card-like white strip with text */
+.hero-strip {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.0);
+  /* border: 1px solid #000; */
+  padding: 0.8rem 1.2rem;
+}
+
+.hero-strip h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.0em;
+}
+
+.hero-strip p {
+  font-size: 1rem;
+  margin-top: 0.0 rem;
+}
+
+/* -------- Main layout -------- */
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  background: #ffffff;
+}
+
+/* Intro + contact block */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1.5rem;
+}
+
+.intro-text {
+  flex: 2 1 260px;
+}
+
+.intro-text h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro-text p {
+  margin-bottom: 0.5rem;
+}
+
+.intro-meta {
+  font-size: 0.95rem;
+  color: #444;
+  margin-top: 0.75rem;
+}
+
+.contact {
+  flex: 1 1 200px;
+  font-size: 0.95rem;
+}
+
+.contact h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact ul {
+  list-style: none;
+}
+
+.contact li + li {
+  margin-top: 0.25rem;
+}
+
+/* Sections */
+
+section {
+  margin-bottom: 1.75rem;
+}
+
+section h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #555;
+}
+
+.item {
+  margin-bottom: 0.75rem;
+}
+
+.item-title {
+  font-weight: 600;
+}
+
+.item-subtitle {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.item-meta {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Footer */
+
+footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #777;
+  text-align: center;
+}
+
+/* Small screens */
+
+@media (max-width: 600px) {
+  .hero-strip h1 {
+    font-size: 1.6rem;
+  }
+}
