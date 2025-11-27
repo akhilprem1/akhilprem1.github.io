@@ -21,62 +21,115 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Hero container: acts as a viewport over the fixed-size image */
-/* The image must have a 50% whited out left region so it always appears centered. */
+/* -------- Hero with background image -------- */
+
 .hero {
   position: relative;
-  width: 100%;
-  height: 175px;           /* adjust to match your banner’s visual height */
-  overflow: hidden;        /* hide the part of the image that extends past the right edge */
-  border-bottom: 1px solid #000;
-  background-color: #ffffff;
+  height: 200px;  /* adjust to taste / image aspect */
+  background-image: url("../img/banner.png"); /* new banner with no whiteout */
+  background-size: cover;       /* or 'contain' if you prefer */
+  background-position: center;  /* center the artwork */
+  background-repeat: no-repeat;
+  border-bottom: 2px solid #000;
 }
 
-/* The actual banner image: fixed size, anchored at the left */
-.hero-img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 175px;           /* same as .hero height */
-  width: auto;             /* keep aspect ratio, no rescaling based on window width */
-  max-width: none;         /* don’t auto-fit to container */
-}
-
-/* Text overlay on top of the image */
-/* .hero-inner {
+/* Centered container, same width as main content */
+.hero-inner {
   position: relative;
-  z-index: 2;
   max-width: 900px;
   margin: 0 auto;
-  padding: 1.8rem 1rem;
-} */
-
-.hero-inner {
-  position: absolute;
-  top: 50%;               /* vertical position of top w.r.t. hero */
-  left: 50%;              /* horizontal center of left w.r.t. hero */
-  transform: translate(-150%, -50%); /* Move from above anchor by % size of inner. */
-  z-index: 2;
+  height: 100%;       /* fill full hero height */
+  padding: 0 1rem;    /* matches main's horizontal padding */
 }
 
-/* Card-like white strip with text */
+/* White strip aligned with main text column */
 .hero-strip {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.0);
-  /* border: 1px solid #000; */
+  position: absolute;
+  top: 0;
+  bottom: 0;                      /* full height of .hero */
+  left: 0;                        /* left edge of the main content column */
+  width: min(340px, 60%);         /* not too wide on small screens */
+  background: rgba(255, 255, 255, 0.9);
+  border-right: 2px solid #000;   /* vertical divider line */
+  border-left: 2px solid #000;
+  display: flex;
+  align-items: center;            /* center text vertically inside strip */
+}
+
+/* Text inside the strip */
+.hero-text {
   padding: 0.8rem 1.2rem;
 }
 
-.hero-strip h1 {
+.hero-text h1 {
   font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 0.0em;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.0rem;
 }
 
-.hero-strip p {
+.hero-text p {
   font-size: 1rem;
-  margin-top: 0.0 rem;
+  margin: 0;
+}
+
+/* Small screens: shrink the strip a bit */
+@media (max-width: 600px) {
+  .hero {
+    height: 180px;
+  }
+
+  .hero-strip {
+    width: 70%;  /* give text more room on small screens */
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* -------- Navigation bar -------- */
+
+.top-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.top-nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.4rem 1rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 0.95rem;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: #444;
+  padding-bottom: 0.15rem;
+  border-bottom: 2px solid transparent;
+}
+
+.top-nav a:hover {
+  color: #000;
+  border-bottom-color: #ccc;
+}
+
+.top-nav a.active {
+  color: #000;
+  font-weight: 600;
+  border-bottom-color: #000;
+}
+
+/* Small screens: slightly tighter nav */
+@media (max-width: 600px) {
+  .top-nav-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
 }
 
 /* -------- Main layout -------- */
