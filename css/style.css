@@ -221,6 +221,19 @@ section h3 {
   color: #777;
 }
 
+.item-meta-dark {
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.sub-questions {
+  margin: 6px 0 0 20px;
+  padding: 0;
+}
+.sub-questions li {
+  margin-bottom: 4px;
+}
+
 /* Footer */
 
 footer {
